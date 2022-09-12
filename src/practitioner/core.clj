@@ -1,7 +1,10 @@
 (ns practitioner.core
-  (:gen-class))
+  (:gen-class)
+  (:require
+    [practitioner.http.server :as server]))
+
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (server/start))
+
