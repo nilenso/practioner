@@ -6,8 +6,12 @@
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [ring/ring-core          "1.9.6"]
                  [ring/ring-jetty-adapter "1.9.6"]
-                 [org.postgresql/postgresql "42.2.26.jre7"]
-                 [com.github.seancorfield/next.jdbc "1.3.828"]]
+                 [org.postgresql/postgresql "42.2.10"]
+                 [com.github.seancorfield/next.jdbc "1.3.828"]
+                 [bidi "2.1.6"]
+                 [aero "1.1.6"]
+                 [migratus "1.4.4"]]
+  :resource-paths ["config"]
   :main ^:skip-aot practitioner.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

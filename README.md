@@ -2,9 +2,12 @@
 
 FIXME: description
 
-## Installation
+## Local set up
+1. Have Leiningen and Postgres installed
+2.  Use `createdb practitioner` to create a new db 
+3. Connect to the db by using `psql practitioner -U dev -W` , password is 'password'
 
-Download from http://example.com/FIXME.
+
 
 ## Usage
 

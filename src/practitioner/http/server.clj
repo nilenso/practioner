@@ -1,21 +1,26 @@
 (ns practitioner.http.server
+  (:gen-class)
   (:require
-    [ring.adapter.jetty :as jetty]))
+    [practitioner.http.routes :refer (handler)]
+    [ring.adapter.jetty :as jetty])
+  (:import
+    (org.eclipse.jetty.server
+      Server)))
 
 
-(defonce server (atom nil))
+(defonce ^Server server (atom nil))
 
 
 (defn start
   []
   (reset! server
-          (jetty/run-jetty (fn [req] {:status 200 :body "Hello World" :headers {}})  ; a really basic handler
+          (jetty/run-jetty server
                            {:port 3000
                             :join? false})))
 
 
 (defn stop
   []
-  (.stop @server)
+  (.stop ^Server @server)
   (reset! server nil))
 
