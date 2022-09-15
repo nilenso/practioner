@@ -1,14 +1,15 @@
 (ns practitioner.config
   (:require
     [aero.core :as aero]
-    [clojure.java.io :as io]))
+    [clojure.java.io :as io]
+    [mount.core :refer [defstate]]))
 
 
-(defn config
-  []
-  (aero/read-config (io/resource "config.edn")))
+(defstate config
+  :start (aero/read-config (io/resource "config.edn"))
+  :stop nil)
 
 
 (defn db-spec
   []
-  (:db-spec (config)))
+  (:db-spec config))

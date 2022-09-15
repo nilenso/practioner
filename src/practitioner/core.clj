@@ -1,12 +1,13 @@
 (ns practitioner.core
   (:gen-class)
   (:require
-    [practitioner.db.migration :as migration]
+    [mount.core :as mount]
+    [practitioner.migrations :as migrations]
     [practitioner.http.server :as server]))
 
 
 (defn -main
-  [& args]
-  (migration/migrate-up)
+  []
+  (mount/start)
+  (migrations/migrate)
   (server/start))
-

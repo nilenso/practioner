@@ -10,9 +10,11 @@
                  [com.github.seancorfield/next.jdbc "1.3.828"]
                  [bidi "2.1.6"]
                  [aero "1.1.6"]
-                 [migratus "1.4.4"]]
+                 [migratus "1.4.4"]
+                 [mount "0.1.16"]
+                 [hiccup "1.0.5"]]
   :resource-paths ["config"]
   :main ^:skip-aot practitioner.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-D clojure.compiler.direct-linking=true"]}})

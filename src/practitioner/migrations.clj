@@ -1,0 +1,43 @@
+(ns practitioner.migrations
+  (:require
+    [migratus.core :as migratus]
+    [mount.core :as mount]
+    [mount.core :refer [defstate]]
+    [next.jdbc :as jdbc]
+    [practitioner.db.datasource :as ds]))
+
+
+(defstate migration-config
+  :start {:store         :database
+          :migration-dir "db/migrations/"
+          :db            {:datasource ds/datasource}}
+  :stop nil)
+
+
+(defn migrate
+  []
+  (migratus/migrate migration-config))
+
+
+(defn rollback
+  []
+  (migratus/rollback migration-config))
+
+
+(defn up
+  [id]
+  (migratus/up migration-config id))
+
+
+(defn down
+  [id]
+  (migratus/down migration-config id))
+
+
+(defn migrate-with-command
+  [command & args]
+  (case command
+    "migrate" (migrate)
+    "rollback" (rollback)
+    "up" (up (map #(Long/parseLong %) args))
+    "down" (down (map #(Long/parseLong %) args))))
