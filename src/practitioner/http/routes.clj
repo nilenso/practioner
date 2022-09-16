@@ -1,13 +1,28 @@
 (ns practitioner.http.routes
   (:require
     [bidi.ring :refer (make-handler)]
+    [next.jdbc :as jdbc]
+    [practitioner.db.datasource :as ds]
+    [practitioner.views.index :as index-view]
     [ring.util.response :as res]))
 
 
-(defn index-handler
+(defn index
   [request]
-  (res/response "Homepage"))
+  (res/response (index-view/index)))
+
+
+(defn health-check
+  [request]
+  (prn request)
+  (when (try
+          (jdbc/execute! ds/datasource ["select now()"])
+          (catch Exception e
+            (res/response (.getMessage e))))
+    (res/response "pong")))
 
 
 (def handler
-  (make-handler ["/" index-handler]))
+  (make-handler ["/" {"" index
+                      "ping" health-check}]))
+
