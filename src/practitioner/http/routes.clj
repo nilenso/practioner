@@ -14,7 +14,6 @@
 
 (defn health-check
   [request]
-
   (when (try
           (jdbc/execute! ds/datasource ["select now()"])
           (catch Exception e
@@ -23,6 +22,6 @@
 
 
 (def handler
-  (make-handler ["/" {"" index
-                      "ping" health-check}]))
+  (make-handler ["/" {""    index
+                      "api/" {"ping" health-check}}]))
 

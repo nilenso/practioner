@@ -1,8 +1,6 @@
 (ns practitioner.http.routes-test
   (:require
     [clojure.test :refer :all]
-    [mount.core :as mount]
-    [practitioner.config :as config]
     [practitioner.fixtures :as fixture]
     [practitioner.http.routes :refer :all]))
 
@@ -13,8 +11,7 @@
 (deftest health-check-test
   (testing "Returns pong when healthy"
     (with-redefs [http/get (fn [url] {:body "test"})]
-      (let [response (health-check (http/get "localhost:3000/ping"))]
+      (let [response (health-check (http/get "localhost:3000/api/ping"))]
         (is (= "pong" (:body response)))))))
 
 
-(run-tests)
