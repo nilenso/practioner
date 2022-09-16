@@ -5,13 +5,8 @@
     [practitioner.config :as config]))
 
 
-(defstate db-spec
-  :start (config/db-spec)
-  :stop nil)
-
-
 (defstate datasource
-  :start (jdbc/get-datasource db-spec)
+  :start (jdbc/get-datasource (config/db-spec))
   :stop nil)
 
 

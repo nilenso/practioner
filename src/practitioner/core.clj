@@ -2,12 +2,20 @@
   (:gen-class)
   (:require
     [mount.core :as mount]
-    [practitioner.migrations :as migrations]
-    [practitioner.http.server :as server]))
+    [practitioner.http.server :as server]
+    [practitioner.migrations :as migrations]))
+
+
+(defn add-shutdown-hook
+  []
+  (.addShutdownHook (Runtime/getRuntime)
+                    (Thread. ^Runnable #(mount/stop))))
 
 
 (defn -main
   []
   (mount/start)
   (migrations/migrate)
-  (server/start))
+  (add-shutdown-hook))
+
+

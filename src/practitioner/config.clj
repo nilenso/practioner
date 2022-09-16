@@ -13,3 +13,8 @@
 (defn db-spec
   []
   (:db-spec config))
+
+
+(defn http-port
+  []
+  (get-in config [:http-server :port]))

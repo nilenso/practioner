@@ -1,6 +1,9 @@
-{:db-spec {:dbtype   "postgres"
-           :dbname   "practitioner"
-           :host     "127.0.0.1"
-           :port     "5432"
-           :username "dev"
-           :password "password"}}
+{:db-spec     {:dbtype   "postgres"
+               :dbname   "practitioner"
+               :host     "127.0.0.1"
+               :port     "5432"
+               :username "dev"
+               :password "password"}
+ :http-server {
+               :port 3000
+               }}
