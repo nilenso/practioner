@@ -1,14 +1,12 @@
 # practitioner
 
-FIXME: description
+A simple and quick way to track patients at a small clinic.
 
 ## Local set up
-1. Have Leiningen and Postgres installed
-2.  Use `createdb practitioner` to create a new db 
-3. Connect to the db by using `psql practitioner -U dev -W` , password is 'password'
-
-
-
+1. Have Leiningen and Postgres installed 
+2. Use `createdb practitioner` to create a new db. Create a new user with user name `dev` and password `password`
+3. Connect to the db by using `psql practitioner -U dev -W`
+4. Run practitioner by using `lein run`
 ## Usage
 
 FIXME: explanation
