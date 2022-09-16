@@ -14,7 +14,7 @@
 
 (defn health-check
   [request]
-  (prn request)
+
   (when (try
           (jdbc/execute! ds/datasource ["select now()"])
           (catch Exception e
