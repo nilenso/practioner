@@ -6,10 +6,10 @@
     [practitioner.db.datasource :as ds]))
 
 
-(defn db-connection
+(defn db-set-up
   [f]
   (mount/start #'config/config)
   (mount/start #'ds/datasource)
   (f)
-  (mount/stop #'config/config)
-  (mount/stop #'ds/datasource))
+  (mount/stop))
+

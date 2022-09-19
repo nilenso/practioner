@@ -6,7 +6,7 @@
     [ring.mock.request :as mock]))
 
 
-(use-fixtures :once fixture/db-connection)
+(use-fixtures :once fixture/db-set-up)
 
 
 (deftest health-check-test
@@ -15,4 +15,3 @@
            {:status  200
             :headers {}
             :body    "pong"}))))
-
