@@ -12,10 +12,14 @@ A simple and quick way to track patients at a small clinic.
 
 Use `lein run` to start.
 
+### Test Coverage
+Check test coverage by using `lein coverage`. Build will fail if the coverage is less than 75%
+
 ## Developer Notes
 
 Run tests using `lein test`
 
 To start and stop server for development use `(mount/start)` and `(mount/stop)` respectively. Mount will setup the state including config and db datastore
 
-Carry out a health check at `\api\ping` . A pong will be returned if everything is healthy
+Carry out a health check at `\api\ping`. A pong will be returned if everything is healthy
+

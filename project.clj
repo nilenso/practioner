@@ -14,8 +14,11 @@
                  [mount "0.1.16"]
                  [hiccup "1.0.5"]
                  [ring/ring-mock "0.4.0"]]
+
   :resource-paths ["config"]
   :main ^:skip-aot practitioner.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all
+  :aliases {"coverage" ["cloverage" "--fail-threshold" "75"]}
+  :profiles {:user    {:plugins [[lein-cloverage "1.2.2"]]}
+             :uberjar {:aot      :all
                        :jvm-opts ["-D clojure.compiler.direct-linking=true"]}})
