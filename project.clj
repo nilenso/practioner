@@ -12,7 +12,8 @@
                  [aero "1.1.6"]
                  [migratus "1.4.4"]
                  [mount "0.1.16"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [ring/ring-mock "0.4.0"]]
   :resource-paths ["config"]
   :main ^:skip-aot practitioner.core
   :target-path "target/%s"
