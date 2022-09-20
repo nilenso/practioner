@@ -1,7 +1,6 @@
 (ns practitioner.migrations
   (:require
     [migratus.core :as migratus]
-    [mount.core :refer [defstate]]
     [next.jdbc :as jdbc]
     [practitioner.db.datasource :as ds]))
 

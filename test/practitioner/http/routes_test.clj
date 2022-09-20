@@ -1,8 +1,8 @@
 (ns practitioner.http.routes-test
   (:require
-    [clojure.test :refer :all]
+    [clojure.test :refer [deftest is testing use-fixtures]]
     [practitioner.fixtures :as fixture]
-    [practitioner.http.routes :refer :all]
+    [practitioner.http.routes :as routes]
     [ring.mock.request :as mock]))
 
 
@@ -11,7 +11,7 @@
 
 (deftest health-check-test
   (testing "Returns pong when healthy"
-    (is (= (health-check (mock/request :get "/api/ping"))
+    (is (= (routes/health-check (mock/request :get "/api/ping"))
            {:status  200
             :headers {}
             :body    "pong"}))))

@@ -8,12 +8,12 @@
 
 
 (defn index
-  [request]
+  [_]
   (res/response (index-view/index)))
 
 
 (defn health-check
-  [request]
+  [_]
   (when (try
           (jdbc/execute! ds/datasource ["select now()"])
           (catch Exception e

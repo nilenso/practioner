@@ -1,6 +1,5 @@
 (ns practitioner.fixtures
   (:require
-    [clojure.test :refer :all]
     [mount.core :as mount]
     [practitioner.config :as config]
     [practitioner.db.datasource :as ds]))
