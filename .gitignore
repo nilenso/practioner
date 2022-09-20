@@ -16,3 +16,4 @@ pom.xml.asc
 *.DS_Store
 .idea/
 practitioner.iml
+.clj-kondo/.cache

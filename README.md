@@ -15,6 +15,12 @@ Use `lein run` to start.
 ### Test Coverage
 Check test coverage by using `lein coverage`. Build will fail if the coverage is less than 75%
 
+## Linting 
+
+To lint the project run `lein clj-kondo`. This uses [lein-clj-kondo](https://github.com/clj-kondo/lein-clj-kondo) and is installed along with other dependencies/plugins 
+in the project. Configure the linter in the project config 
+in the `.clj-kondo/` directory 
+
 ## Developer Notes
 
 Run tests using `lein test`

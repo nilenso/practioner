@@ -20,5 +20,6 @@
   :target-path "target/%s"
   :aliases {"coverage" ["cloverage" "--fail-threshold" "75"]}
   :profiles {:user    {:plugins [[lein-cloverage "1.2.2"]]}
+             :dev     {:plugins [[com.github.clj-kondo/lein-clj-kondo "0.2.1"]]}
              :uberjar {:aot      :all
-                       :jvm-opts ["-D clojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
