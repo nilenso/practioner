@@ -21,6 +21,11 @@ To lint the project run `lein clj-kondo`. This uses [lein-clj-kondo](https://git
 in the project. Configure the linter in the project config 
 in the `.clj-kondo/` directory 
 
+## Formatting 
+
+[cljfmt](https://github.com/weavejester/cljfmt) is used for formatting. Use `lein cljfmt check` to check the formatting. 
+Fix any formatting issues manually or automatically using `lein cljfmt fix `
+
 ## Developer Notes
 
 Run tests using `lein test`

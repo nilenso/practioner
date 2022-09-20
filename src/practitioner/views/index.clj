@@ -1,7 +1,6 @@
 (ns practitioner.views.index
   (:require
-    [hiccup.page :refer [html5]]))
-
+   [hiccup.page :refer [html5]]))
 
 (defn index
   []
