@@ -30,7 +30,6 @@
 
 (defn migrate-with-command
   [command & id]
-
   (mount/start #'config/config #'ds/datasource)
   (case command
     "migrate" (migrate)

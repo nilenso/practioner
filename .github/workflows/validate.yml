@@ -1,0 +1,70 @@
+name: Clojure CI
+
+on:
+  push:
+    branches:
+      - "$default-branch"
+      - "ci-cd"
+  pull_request:
+    branches:
+      - "$default-branch"
+
+
+jobs:
+
+  install-deps:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Caching dependancies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-clojure-${{ hashFiles('**/project.clj') }}
+          restore-keys: ${{ runner.os }}-clojure
+
+      - name: Install dependencies
+        run: lein deps
+
+
+  run-tests:
+    runs-on: ubuntu-20.04
+    needs: install-deps
+    services:
+      postgres:
+        image: postgres:14.5
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: practitioner
+          POSTGRES_USER: dev
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Caching dependancies
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-clojure-${{ hashFiles('**/project.clj') }}
+          restore-keys: ${{ runner.os }}-clojure
+      - name: Check connection is being made
+        run: pg_isready -d practitioner -h localhost -U dev
+      - name: Install dependencies
+        run: lein deps
+      - name: Run migrations
+        run: lein migrations migrate
+      - name: Run tests
+        run: lein coverage
