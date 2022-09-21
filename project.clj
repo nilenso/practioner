@@ -18,7 +18,8 @@
   :resource-paths ["config"]
   :main ^:skip-aot practitioner.core
   :target-path "target/%s"
-  :aliases {"coverage" ["cloverage" "--fail-threshold" "75"]}
+  :aliases {"coverage" ["cloverage" "--fail-threshold" "30"]
+            "migrations" ["run" "-m" "practitioner.migrations/migrate-with-command"]}
   :profiles {:user    {:plugins [[lein-cloverage "1.2.2"]]}
              :dev     {:plugins [[com.github.clj-kondo/lein-clj-kondo "0.2.1"]
                                  [lein-cljfmt "0.9.0"]]}

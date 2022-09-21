@@ -12,7 +12,7 @@ A simple and quick way to track patients at a small clinic.
 
 Use `lein run` to start.
 
-### Test Coverage
+## Test Coverage
 Check test coverage by using `lein coverage`. Build will fail if the coverage is less than 75%
 
 ## Linting 

@@ -1,8 +1,10 @@
 (ns practitioner.migrations
   (:require
+   [mount.core :as mount]
    [migratus.core :as migratus]
    [next.jdbc :as jdbc]
-   [practitioner.db.datasource :as ds]))
+   [practitioner.db.datasource :as ds]
+   [practitioner.config :as config]))
 
 (defn migration-config
   []
@@ -27,9 +29,12 @@
   (migratus/down migration-config id))
 
 (defn migrate-with-command
-  [command & args]
+  [command & id]
+
+  (mount/start #'config/config #'ds/datasource)
   (case command
     "migrate" (migrate)
     "rollback" (rollback)
-    "up" (up (map #(Long/parseLong %) args))
-    "down" (down (map #(Long/parseLong %) args))))
+    "up" (up (Long/parseLong id))
+    "down" (down (Long/parseLong id)))
+  (mount/stop))
